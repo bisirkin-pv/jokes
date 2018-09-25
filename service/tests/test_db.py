@@ -3,6 +3,7 @@
 import unittest
 from service.src.utility.db.DataBase import DataBase
 from service.src.utility.PropertyReader import PropertyReader
+from service.src.utility.db.Handler import Handler
 
 
 class TestDatabase(unittest.TestCase):
@@ -17,6 +18,11 @@ class TestDatabase(unittest.TestCase):
         cur = self.conn.cursor()
         cur.execute('SELECT version()')
         db_version = cur.fetchone()
+        self.assertIsNotNone(db_version, 'Error execute query')
+
+    def test_handler_execute_query(self):
+        db_handler = Handler(self.conn)
+        db_version = db_handler.exec('SELECT version()')
         self.assertIsNotNone(db_version, 'Error execute query')
 
     def tearDown(self):
