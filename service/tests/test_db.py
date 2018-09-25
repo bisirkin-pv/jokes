@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import unittest
-from service.src.utility.DataBase import DataBase
+from service.src.utility.db.DataBase import DataBase
 from service.src.utility.PropertyReader import PropertyReader
 
 
