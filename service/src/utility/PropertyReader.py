@@ -16,4 +16,5 @@ class PropertyReader:
             print("Error create file")
 
     def get(self, key):
-        return self.property.get(key)
+        val = self.property.get(key)
+        return val if val is not None else ''
