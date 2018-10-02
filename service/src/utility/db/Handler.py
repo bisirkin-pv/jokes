@@ -14,3 +14,10 @@ class Handler:
         cur.execute(query)
         result = cur.fetchone()
         return result
+
+    """ Execute simple query, return one row """
+    def exec_with_param(self, query, *args):
+        cur = self.__connection.cursor()
+        cur.execute(query, args)
+        result = cur.fetchone()
+        return result

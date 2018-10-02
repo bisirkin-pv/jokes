@@ -25,6 +25,12 @@ class TestDatabase(unittest.TestCase):
         db_version = db_handler.exec('SELECT version()')
         self.assertIsNotNone(db_version, 'Error execute query')
 
+    def test_handler_execute_query_with_param(self):
+        db_handler = Handler(self.conn)
+        param = ('version()', )
+        db_version = db_handler.exec_with_param('SELECT %s', param)
+        self.assertIsNotNone(db_version, 'Error execute query')
+
     def tearDown(self):
         if self.conn is not None:
             self.conn.close()

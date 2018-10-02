@@ -8,4 +8,6 @@ class DataBase:
         self.__property = property_db
 
     def connect(self):
-        return psycopg2.connect(**self.__property.get_dict())
+        conn = psycopg2.connect(**self.__property.get_dict())
+        conn.set_client_encoding('UTF8')
+        return conn
