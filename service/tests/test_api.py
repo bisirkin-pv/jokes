@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import urllib3
 import unittest
 
@@ -13,6 +15,7 @@ class TestApi(unittest.TestCase):
     def test_on_availability_url_receiving_id(self):
         request = self.http.request('GET', 'http://localhost:8787/api/v1/jokes/1')
         self.assertEqual(request.status, 200)
+        self.assertNotEquals(request.data.decode('utf-8'), '')
 
     def tearDown(self):
         self.http.clear()
